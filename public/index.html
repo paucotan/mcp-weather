@@ -13,6 +13,10 @@
       <label for="city">City</label>
       <div class="row">
         <input id="city" name="city" placeholder="e.g., Vancouver" required />
+        <select id="units" name="units" aria-label="Units">
+          <option value="metric" selected>Metric (°C, km/h)</option>
+          <option value="imperial">Imperial (°F, mph)</option>
+        </select>
         <button type="submit">Get Weather</button>
       </div>
       <p class="muted">Tip: Your OpenWeather key may need 10–60 minutes to activate.</p>

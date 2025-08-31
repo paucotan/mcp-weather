@@ -15,6 +15,14 @@ paths:
           schema:
             type: string
           description: City name (e.g., Vancouver)
+        - in: query
+          name: units
+          required: false
+          schema:
+            type: string
+            enum: [metric, imperial]
+            default: metric
+          description: Temperature/wind units
       responses:
         "200":
           description: Weather payload
@@ -25,12 +33,14 @@ paths:
                 properties:
                   city: { type: string }
                   country: { type: string, nullable: true }
+                  units: { type: string, enum: [metric, imperial] }
+                  temp: { type: number, nullable: true }
                   tempC: { type: number }
                   description: { type: string }
                   humidity: { type: number }
                   windKph: { type: number, nullable: true }
+                  windMph: { type: number, nullable: true }
         "400":
           description: Missing parameters
         "500":
           description: Server error
-

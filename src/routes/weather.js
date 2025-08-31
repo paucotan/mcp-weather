@@ -10,8 +10,12 @@ router.get('/', asyncHandler(async (req, res) => {
   const city = (req.query.city || '').toString().trim();
   if (!city) return res.status(400).json({ error: 'Missing ?city' });
 
+  // Optional units: metric (default) or imperial
+  let units = (req.query.units || 'metric').toString().trim().toLowerCase();
+  if (!['metric', 'imperial'].includes(units)) units = 'metric';
+
   try {
-    const data = await getCurrentWeather(city, { apiKey: config.openWeatherKey, units: 'metric' });
+    const data = await getCurrentWeather(city, { apiKey: config.openWeatherKey, units });
     res.json(data);
   } catch (e) {
     // Provide a friendlier hint for 401
@@ -27,4 +31,3 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 export default router;
-

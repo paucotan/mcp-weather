@@ -27,6 +27,7 @@ input, button { font: inherit; }
 
 .row { display: flex; gap: .5rem; margin: 1rem 0; }
 .row input { flex: 1 1 auto; padding: .55rem .65rem; border-radius: 6px; border: 1px solid var(--border); background: var(--bg); color: var(--fg); }
+.row select { padding: .55rem .65rem; border-radius: 6px; border: 1px solid var(--border); background: var(--bg); color: var(--fg); }
 .row button { padding: .55rem .8rem; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
 .row button:hover { filter: brightness(0.95); }
 
@@ -37,4 +38,3 @@ pre { overflow: auto; background: var(--bg); border: 1px solid var(--border); pa
 
 #result .headline { font-size: 1.15rem; font-weight: 700; }
 #result .temp { font-size: 1rem; font-weight: 600; }
-

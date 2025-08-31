@@ -24,6 +24,11 @@ app.get('/openapi.yaml', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'openapi.yaml'));
 });
 
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ ok: true, uptime: process.uptime(), timestamp: Date.now() });
+});
+
 // 404 and error handlers
 app.use(notFound);
 app.use(errorHandler);
@@ -31,4 +36,3 @@ app.use(errorHandler);
 app.listen(config.port, () => {
   console.log(`Weather tool on http://localhost:${config.port}`);
 });
-

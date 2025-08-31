@@ -33,9 +33,15 @@ Environment
 API
 -
 
-- `GET /weather?city=CityName`
-  - Response JSON: `{ city, country, tempC, description, humidity, windKph }`
+- `GET /weather?city=CityName[&units=metric|imperial]`
+  - Response JSON: `{ city, country, units, temp, tempC, description, humidity, windKph, windMph }`
+    - `temp`: in requested units; `tempC`: always Celsius for compatibility
+    - `windKph`/`windMph`: both provided for convenience
   - Errors: 400 (missing city), 401 (invalid/unactivated key), 500 (server)
+  - Example: `/weather?city=Vancouver&units=imperial`
+
+- `GET /health`
+  - Response JSON: `{ ok: true, uptime, timestamp }`
 
 MCP Integration
 -
