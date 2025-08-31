@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: MCP Weather Tool
+  version: 1.0.0
+servers:
+  - url: /
+paths:
+  /weather:
+    get:
+      summary: Get current weather for a city
+      parameters:
+        - in: query
+          name: city
+          required: true
+          schema:
+            type: string
+          description: City name (e.g., Vancouver)
+      responses:
+        "200":
+          description: Weather payload
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  city: { type: string }
+                  country: { type: string, nullable: true }
+                  tempC: { type: number }
+                  description: { type: string }
+                  humidity: { type: number }
+                  windKph: { type: number, nullable: true }
+        "400":
+          description: Missing parameters
+        "500":
+          description: Server error
+
